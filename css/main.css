@@ -5,12 +5,15 @@
   --primaryColor: #0dc5f3;
   --primaryColorTransparentD: rgba(13, 197, 243, 0.6);
   --primaryColorTransparentL: rgba(13, 197, 243, 0.3);
+  --secondaryColor: #f15025;
   --mainBlack: #222;
   --mainWhite: #fff;
   --offWhite: #eceaea;
   --darkGrey: #9c9c9c;
   --mainTransition: all 0.3s linear;
+  --buttonTransition: all 0.5s linear;
   --mainSpacing: 0.2rem;
+  --bigSpacing: 0.4rem;
 }
 /*============
  Global Style 
@@ -408,30 +411,99 @@ p {
   justify-content: center;
 }
 .nav-container .nav-link {
+  position: relative;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
-  width: 80%;
   font-size: 1.2rem;
   line-height: 1.5;
   padding: 0.5rem 1rem;
   text-align: center;
-  border: 1px solid var(--primaryColor);
-  border-radius: 15px;
   margin: 0.5rem 0;
-  color: var(--primaryColor);
+  color: var(--secondaryColor);
   font-weight: bolder;
   letter-spacing: var(--mainSpacing);
-  max-width: 300px;
-  max-height: 60px;
+  width: 150px;
+  height: 50px;
+  transition: var(--mainTransition);
+  background: var(--secondaryColor);
 }
 .nav-container .nav-link:hover {
-  color: var(--mainBlack);
-  border-color: var(--mainBlack);
   background-color: var(--primaryColor);
+  color: var(--primaryColor);
+  box-shadow: 0px 0px 30px var(--primaryColor);
+  letter-spacing: var(--bigSpacing);
+  font-size: 1.4rem;
+}
+.nav-container .nav-link::before {
+  content: '';
+  background: var(--mainBlack);
+  position: absolute;
+  inset: 4px;
+}
+.nav-container .nav-link span {
+  z-index: 1;
+}
+.nav-link .ball {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background: var(--primaryColor);
+  animation: ballMove 5s linear infinite;
+}
+.nav-link .ball2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  background-color: var(--primaryColor);
+  animation: ballMove2 5s linear infinite;
+}
+.nav-link:hover .ball2 {
+  background: var(--secondaryColor);
+}
+.nav-link:hover .ball {
+  background: var(--secondaryColor);
+}
+@keyframes ballMove {
+  0% {
+    transform: translate(0);
+  }
+  30% {
+    transform: translateX(145px);
+  }
+  50% {
+    transform: translateY(45px) translateX(145px);
+  }
+  80% {
+    transform: translateX(0) translateY(45px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+@keyframes ballMove2 {
+  0% {
+    transform: translate(0);
+  }
+  30% {
+    transform: translateY(45px);
+  }
+  50% {
+    transform: translateY(45px) translateX(145px);
+  }
+  80% {
+    transform: translateX(145px) translateY(0px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
 .text-container {
   padding: 2rem;
